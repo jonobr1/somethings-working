@@ -2,11 +2,10 @@
 
 import { useEffect, useRef } from 'react';
 
-const NODE_COUNT = 600;
+const NODE_COUNT = 800;
 const BASE_DAMPING = 0.7;
 const BASE_SPRING_LENGTH = 2;
-const BASE_REPULSION = -0.0999;
-const WARMUP_TICKS = 1;
+const BASE_REPULSION = -0.075;
 const colors = ['#6F7D4F', '#DDE0CF', '#DA680F', '#7492AC'];
 
 function seededRandom(seed: number) {
@@ -47,7 +46,7 @@ export default function GraphBackground() {
         powerPreference: 'high-performance',
       });
       renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-      renderer.setClearColor(0xf3f3f5, 1);
+      renderer.setClearColor(0xf3f3f5, 0);
       renderer.domElement.setAttribute('aria-hidden', 'true');
       renderer.domElement.style.opacity = '0';
       host.appendChild(renderer.domElement);
@@ -87,10 +86,13 @@ export default function GraphBackground() {
       graph.sizeAttenuation = true;
       graph.pointsInheritColor = true;
       graph.pointColor.setRGB(1, 1, 1);
-      graph.linkColor.setRGB(1, 1, 1);
+      if (graph.links) {
+        graph.links.visible = false;
+      }
       graph.nodeRadius = 1.25;
       graph.linewidth = 1;
       graph.opacity = 0.6;
+      graph.blending = THREE.NormalBlending;
       scene.add(graph);
 
       let boosted = false;
@@ -112,21 +114,18 @@ export default function GraphBackground() {
       resizeObserver.observe(host);
       resize();
 
-      let ticks = 0;
+      animations.push(
+        gsap.to(renderer.domElement, {
+          opacity: 1,
+          duration: 0.8,
+          ease: 'power2.out',
+        }),
+      );
+
       const animate = (now: number) => {
         if (!renderer || !graph || disposed) return;
         graph.update(now);
         renderer.render(scene, camera);
-        ticks += 1;
-        if (ticks === WARMUP_TICKS) {
-          animations.push(
-            gsap.to(renderer.domElement, {
-              opacity: 1,
-              duration: 0.8,
-              ease: 'power2.out',
-            }),
-          );
-        }
         frame = window.requestAnimationFrame(animate);
       };
       frame = window.requestAnimationFrame(animate);

@@ -28,7 +28,7 @@ function Wordmark() {
       </span>
       <h1 className="wordmark">
         S
-        <div>
+        <div className="o1">
           <span style={{ display: italic[0] ? 'none' : 'inline' }}>o</span>
           <span
             className="italic-o"
@@ -38,7 +38,7 @@ function Wordmark() {
           </span>
         </div>
         mething’s W
-        <div>
+        <div className="o2">
           <span style={{ display: italic[1] ? 'none' : 'inline' }}>o</span>
           <span
             className="italic-o"
