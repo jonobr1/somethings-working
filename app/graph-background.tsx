@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react';
 
 const NODE_COUNT = 800;
 const BASE_DAMPING = 0.7;
-const BASE_SPRING_LENGTH = 2;
+const BASE_SPRING_LENGTH = 5;
 const BASE_REPULSION = -0.075;
 const colors = ['#6F7D4F', '#DDE0CF', '#DA680F', '#7492AC'];
 
@@ -46,7 +46,7 @@ export default function GraphBackground() {
         powerPreference: 'high-performance',
       });
       renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-      renderer.setClearColor(0xf3f3f5, 0);
+      renderer.setClearColor(0xffffff, 0);
       renderer.domElement.setAttribute('aria-hidden', 'true');
       renderer.domElement.style.opacity = '0';
       host.appendChild(renderer.domElement);
@@ -80,9 +80,6 @@ export default function GraphBackground() {
       graph.springLength = BASE_SPRING_LENGTH;
       graph.stiffness = 0;
       graph.gravity = 0.2;
-      graph.beginning = 0;
-      graph.ending = 1;
-      graph.opacity = 1;
       graph.sizeAttenuation = true;
       graph.pointsInheritColor = true;
       graph.pointColor.setRGB(1, 1, 1);
@@ -91,7 +88,7 @@ export default function GraphBackground() {
       }
       graph.nodeRadius = 1.25;
       graph.linewidth = 1;
-      graph.opacity = 0.6;
+      graph.opacity = 0.4;
       graph.blending = THREE.NormalBlending;
       scene.add(graph);
 
