@@ -133,6 +133,11 @@ body {
   left: 100%;
 }
 
+a {
+  color: #020202;
+  text-decoration: none;
+}
+
 @media (max-width: 700px) {
   .corner-links {
     left: 5%;

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import GraphBackground from './graph-background';
+import Link from 'next/link';
 
 function Wordmark() {
   const [italic, setItalic] = useState<[boolean, boolean]>([false, false]);
@@ -64,20 +65,20 @@ export default function Home() {
     <main className="page-shell">
       <GraphBackground />
       <nav className="corner-links top-links" aria-label="Primary">
-        <span>PROJECTS</span>
-        <span>INFO</span>
+        <Link href="#">PROJECTS</Link>
+        <Link href="#">INFO</Link>
       </nav>
       <div className="centerpiece">
         <Wordmark />
       </div>
       <footer className="corner-links bottom-links">
-        <span>SUBSTACK</span>
+        <Link href="#">SUBSTACK</Link>
         <p>
           Closing the gap between what’s
           <br />
           imagined and what’s real.
         </p>
-        <span>CONTACT</span>
+        <Link href="#">CONTACT</Link>
       </footer>
     </main>
   );
