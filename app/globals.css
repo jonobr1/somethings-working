@@ -1,0 +1,165 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  background: #F3F3F5;
+  color: #020202;
+}
+
+.page-shell {
+  position: relative;
+  isolation: isolate;
+  min-height: 100svh;
+  overflow: hidden;
+  background: #F3F3F5;
+}
+
+.graph-background {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.graph-background canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.corner-links {
+  position: absolute;
+  z-index: 2;
+  left: 3.55%;
+  right: 3.55%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font:
+    400 clamp(12px, 0.98vw, 19px)/1.2 'DM Mono',
+    monospace;
+  letter-spacing: 0.14em;
+}
+
+.top-links {
+  top: 5.2%;
+}
+.bottom-links {
+  bottom: 3.1%;
+  align-items: end;
+}
+
+.bottom-links p {
+  margin: 0 0 -0.2em;
+  font:
+    400 clamp(16px, 1.33vw, 28px)/1.2 'Instrument Sans',
+    sans-serif;
+  letter-spacing: -0.025em;
+  text-align: center;
+}
+
+.centerpiece {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 0 4%;
+}
+
+.wordmark-frame {
+  position: relative;
+  max-width: 100%;
+}
+
+.wordmark {
+  margin: 0;
+  white-space: nowrap;
+  font:
+    400 clamp(48px, 6.15vw, 130px)/0.98 'Instrument Serif',
+    Georgia,
+    serif;
+  letter-spacing: -0.048em;
+  text-align: center;
+}
+
+.wordmark div {
+  position: relative;
+  display: inline;
+}
+.wordmark div span {
+  
+}
+
+.italic-o {
+  font-style: italic;
+}
+
+.registration {
+  position: absolute;
+  font:
+    400 clamp(24px, 2.25vw, 48px)/1 'Instrument Serif',
+    Georgia,
+    serif;
+  font-weight: 200;
+  line-height: 0;
+}
+.registration-tl {
+  top: 0;
+  left: 0;
+  transform: translateX(-100%);
+}
+.registration-tr {
+  top: 0;
+  left: 100%;
+}
+.registration-bl {
+  bottom: 0;
+  left: 0;
+  transform: translateX(-100%);
+}
+.registration-br {
+  bottom: 0;
+  left: 100%;
+}
+
+@media (max-width: 700px) {
+  .corner-links {
+    left: 5%;
+    right: 5%;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+  }
+  .top-links {
+    top: 4%;
+  }
+  .bottom-links {
+    bottom: 3.5%;
+  }
+  .bottom-links p {
+    position: absolute;
+    bottom: 46px;
+    left: 0;
+    right: 0;
+    font-size: 16px;
+  }
+  .wordmark {
+    font-size: clamp(38px, 8vw, 60px);
+  }
+  .registration {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 440px) {
+  .wordmark {
+    font-size: 13.4vw;
+  }
+}
