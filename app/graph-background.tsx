@@ -47,7 +47,7 @@ export default function GraphBackground() {
         powerPreference: 'high-performance',
       });
       renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-      renderer.setClearColor(0xffffff, 1);
+      renderer.setClearColor(0xf3f3f5, 1);
       renderer.domElement.setAttribute('aria-hidden', 'true');
       renderer.domElement.style.opacity = '0';
       host.appendChild(renderer.domElement);
